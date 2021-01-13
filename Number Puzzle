@@ -1,0 +1,404 @@
+#include <stdio.h>
+#include<unistd.h>
+#include<string.h>
+#include <stdlib.h>
+int main()
+{
+    int level,i,j,k,len,sample[100][100]={{1,2},{3,4}},number,check=0;
+    int puzzle1[2][2]={{3,4},{1,2}},puzzle2[3][3]={{3,2,1},{6,5,4},{9,8,7}},puzzle3[4][4]={{5,6,7,8},{1,2,3,4},{13,14,15,16},{9,10,11,12}};
+    int puzzle[level][level];
+    int ans1[2][2]={{1,2},{3,4}},ans2[3][3]={{1,2,3},{4,5,6},{7,8,9}},ans3[4][4]={{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+    char script[]="Welcome you for the game!!\nLet's start\nHere is your sample output: ";
+    char direction;
+    len=strlen(script);
+    for(i=0;i<len;i++)
+    {
+        printf("%c",script[i]);
+        //usleep(1000000);
+    }
+    printf("\n");
+    for(i=0;i<2;i++)
+    {
+        for(j=0;j<2;j++)
+        {
+            printf("|_%d",sample[i][j]);
+        }
+        printf("_|\n");
+    }
+    printf(" 1.Level Easy (2*2)\n 2.Level Intermediate (3*3)\n 3.Level Advanced (4*4)\nSelect your level of difficulty:");
+    scanf("%d",&level);
+    switch(level)
+    {
+        case 1: printf("Here is your 2*2 matrix:\n");
+                level=2;
+                while(check==0)
+                {
+                    printf("Choose a number to move:");
+                    scanf("%d",&number);
+                    printf("\n1.Click *l* to move left\n2.Click *r* to move right\n3.Click *t* to move top\n4.Click *b* to move bottom\nChoose your direction to move:");
+                    scanf(" %c",&direction);
+                    switch(direction)
+                    {
+                        case 'l':printf("Moving left\n");
+                        for(i=0;i<level;i++)
+                        {
+                            for(j=0;j<level;j++)
+                            {
+                                if(number==puzzle1[i][j])
+                                {
+                                k=puzzle1[i][j];
+                                puzzle1[i][j]=puzzle1[i][j+1];
+                                puzzle1[i][j+1]=k;
+                                break;
+                                }
+                            }
+                        }
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle1[i][j]);
+                        }
+                        printf("_|\n");
+                        }
+                        break;
+                        case 'r':printf("Moving right\n");
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle1[i][j])
+                            {
+                                k=puzzle1[i][j];
+                                puzzle1[i][j]=puzzle1[i][j-1];
+                                puzzle1[i][j-1]=k;
+                                break;
+                            }
+                        }
+                        }
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle1[i][j]);
+                        }
+                        printf("_|\n");
+                        }
+                        break;
+                        case 't':printf("Moving up\n");
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle1[i][j])
+                            {
+                                k=puzzle1[i][j];
+                                puzzle1[i][j]=puzzle1[i-1][j];
+                                puzzle1[i-1][j]=k;
+                            }
+                        }
+                        }   
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle1[i][j]);
+                        }
+                        printf("_|\n");
+                        }
+                        break;
+                        case 'b' :printf("Moving down\n");
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle1[i][j])
+                            {
+                                k=puzzle1[i][j];
+                                puzzle1[i][j]=puzzle1[i+1][j];
+                                puzzle1[i+1][j]=k;
+                                break;
+                            }
+                        }
+                        }
+                        for(i=0;i<level;i++)
+                        {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle1[i][j]);
+                        }
+                        printf("_|\n");
+                        }
+                        break;
+                    }
+                for(i=0;i<level;i++)
+                {
+                for(j=0;j<level;j++)
+                {
+                    if(ans1[i][j]!=puzzle1[i][j])
+                    {
+                        check=0;
+                    }
+                    else
+                    {
+                        check++;
+                    }
+                }
+                }
+            }
+        
+                break;
+        case 2: printf("Here is your 3*3 matrix:\n");
+                level=3;
+                while(check==0)
+                {
+        printf("Choose a number to move:");
+        scanf("%d",&number);
+        printf("\n1.Click *l* to move left\n2.Click *r* to move right\n3.Click *t* to move top\n4.Click *b* to move bottom\nChoose your direction to move:");
+        scanf(" %c",&direction);
+        switch(direction)
+        {
+            case 'l':printf("Moving left\n");
+                     for(i=0;i<level;i++)
+                    {
+                         for(j=0;j<level;j++)
+                         {
+                            if(number==puzzle2[i][j])
+                            {
+                                k=puzzle2[i][j];
+                                puzzle2[i][j]=puzzle2[i][j+1];
+                                puzzle2[i][j+1]=k;
+                                break;
+                            }
+                         }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle2[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 'r':printf("Moving right\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle2[i][j])
+                            {
+                                k=puzzle2[i][j];
+                                puzzle2[i][j]=puzzle2[i][j-1];
+                                puzzle2[i][j-1]=k;
+                                break;
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle2[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 't':printf("Moving up\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle2[i][j])
+                            {
+                                k=puzzle2[i][j];
+                                puzzle2[i][j]=puzzle2[i-1][j];
+                                puzzle2[i-1][j]=k;
+                                
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle2[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 'b' :printf("Moving down\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle2[i][j])
+                            {
+                                k=puzzle2[i][j];
+                                puzzle2[i][j]=puzzle2[i+1][j];
+                                puzzle2[i+1][j]=k;
+                                break;
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle2[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+        }
+            for(i=0;i<level;i++)
+            {
+                for(j=0;j<level;j++)
+                {
+                    if(ans2[i][j]!=puzzle2[i][j])
+                    {
+                        check=0;
+                    }
+                    else
+                    {
+                        check++;
+                    }
+                }
+            }
+        }
+                
+                break;
+        case 3: printf("Here is your 4*4 matrix:\n");
+                
+                level=4;
+                while(check==0)
+                {
+        printf("Choose a number to move:");
+        scanf("%d",&number);
+        printf("\n1.Click *l* to move left\n2.Click *r* to move right\n3.Click *t* to move top\n4.Click *b* to move bottom\nChoose your direction to move:");
+        scanf(" %c",&direction);
+        switch(direction)
+        {
+            case 'l':printf("Moving left\n");
+                     for(i=0;i<level;i++)
+                    {
+                         for(j=0;j<level;j++)
+                         {
+                            if(number==puzzle3[i][j])
+                            {
+                                k=puzzle3[i][j];
+                                puzzle3[i][j]=puzzle3[i][j+1];
+                                puzzle3[i][j+1]=k;
+                                break;
+                            }
+                         }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle3[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 'r':printf("Moving right\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle3[i][j])
+                            {
+                                k=puzzle3[i][j];
+                                puzzle3[i][j]=puzzle3[i][j-1];
+                                puzzle3[i][j-1]=k;
+                                break;
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle3[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 't':printf("Moving up\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle3[i][j])
+                            {
+                                k=puzzle3[i][j];
+                                puzzle3[i][j]=puzzle3[i-1][j];
+                                puzzle3[i-1][j]=k;
+                               
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle3[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+            case 'b' :printf("Moving down\n");
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            if(number==puzzle3[i][j])
+                            {
+                                k=puzzle3[i][j];
+                                puzzle3[i][j]=puzzle3[i+1][j];
+                                puzzle3[i+1][j]=k;
+                                break;
+                            }
+                        }
+                    }
+                    for(i=0;i<level;i++)
+                    {
+                        for(j=0;j<level;j++)
+                        {
+                            printf("|_%d",puzzle3[i][j]);
+                        }
+                        printf("_|\n");
+                    }
+                    break;
+        }
+            for(i=0;i<level;i++)
+            {
+                for(j=0;j<level;j++)
+                {
+                    if(ans1[i][j]!=puzzle3[i][j])
+                    {
+                        check=0;
+                    }
+                    else
+                    {
+                        check++;
+                    }
+                }
+            }
+        }
+                break;
+    }
+    for(i=0;i<2;i++)
+    {
+        for(j=0;j<2;j++)
+        {
+            printf("%d ",puzzle[i][j]);
+        }
+        printf("\n");
+    }
+    
+    printf("***Good***");
+        
+    return 0;
+}
