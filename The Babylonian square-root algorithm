@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int number;
+    double x=2,avg,divide;
+    printf("Enter the number to find square root:");
+    scanf("%d",&number);
+    divide=number/x;
+    avg=(x+divide)/2;
+    do
+    {
+        x=avg;
+        divide=number/x;
+        avg=(x+divide)/2;
+        
+    }while(x-divide>0.000000001);
+    printf("%lf",avg);
+
+    return 0;
+}
