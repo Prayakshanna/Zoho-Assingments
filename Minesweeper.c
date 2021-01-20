@@ -137,6 +137,10 @@ char playgame(char game[][100],char game1[][100],int n)
             game[inp1+1][inp2+1]=game1[inp1+1][inp2+1];
         }
     }
+    else
+    {
+        game[inp1][inp2]=game1[inp1][inp2];
+    }
     for(i=0;i<n;i++)
     {
         for(j=0;j<n;j++)
